@@ -19,7 +19,7 @@ app.get("/todos", async(req, res) => {
     } catch (error) {
         res.send({
             success: false,
-            message: "Failed to receive successfully",
+            message: "Failed to receive todo lists",
             data: result, 
         });  
     }
@@ -43,6 +43,27 @@ app.post("/create-todo", async(req, res) => {
         });  
     }
 });
+
+app.get("/:todoId", async(req, res) => {
+    const todoId = req.params.todoId
+    try {
+        const result = await Todo.findById(todoId)
+        res.send({
+            success: true,
+            message: "Todo list received successfully",
+            data: result,
+        });
+    } catch (error) {
+        console.log(error)
+        res.send({
+            success: false,
+            message: "Failed to receive todo list ",
+            data: result, 
+        });  
+    }
+});
+
+
 
 app.listen(port, () =>{
     console.log(`SERVER IS RUNNING ON PORT ${port}`)
