@@ -1,4 +1,4 @@
-import {model, models, Schema} from "mongoose";
+import mongoose, {model, Schema} from "mongoose";
 
 const todoSchema = new Schema({
     text: {type: String, required: true},
@@ -6,4 +6,4 @@ const todoSchema = new Schema({
     deadline: {type: String, required: true},
 });
 
-export const Todo = models.Todo || new model("Todo", todoSchema);
+export const Todo = mongoose.models.Todo || new model("Todo", todoSchema);
