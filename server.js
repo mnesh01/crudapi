@@ -25,6 +25,25 @@ app.get("/todos", async(req, res) => {
     }
 });
 
+app.post("/create-todo", async(req, res) => {
+    const toDoDetails = req.body;
+    try {
+        const result = await Todo.create(toDoDetails);
+        res.send({
+            success: true,
+            message: "Todo lists received successfully",
+            data: result,
+        });
+    } catch (error) {
+        console.log(error)
+        res.send({
+            success: false,
+            message: "Failed to receive successfully",
+            data: result, 
+        });  
+    }
+});
+
 app.listen(port, () =>{
     console.log(`SERVER IS RUNNING ON PORT ${port}`)
 })
