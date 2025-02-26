@@ -63,6 +63,43 @@ app.get("/:todoId", async(req, res) => {
     }
 });
 
+app.patch("/:todoId", async(req, res) => {
+    const todoId = req.params.todoId;
+    const updatedTodo = req.body;
+    try {
+        const result = await Todo.findByIdAndUpdate(todoId, updatedTodo, {
+            new: true,
+        });
+        res.send({
+            success: true,
+            message: "Todo updated successfully",
+            data: result,
+        });
+    } catch (error) {
+        res.send({
+            success: false,
+            message: "Failed to update todo list ",
+            data: result, 
+        });  
+    }
+});
+
+app.delete("/delete/:todoId", async(req, res) => {
+    try {
+        await Todo.findByIdAndDelete(req.params.todoId)
+        res.send({
+            success: true,
+            message: "Todo deleted successfully",
+            data: null,
+        });
+    } catch (error) {
+        res.send({
+            success: true,
+            message: "Failed to delete todo ",
+            data: null, 
+        });  
+    }
+});
 
 
 app.listen(port, () =>{
