@@ -1,4 +1,4 @@
-# Todo List CRUD API
+# TodoList CRUD API
 
 This is a simple **Todo List CRUD API** built with **Node.js, Express, and MongoDB**. The API allows users to create, read, update, and delete todo tasks.
 
