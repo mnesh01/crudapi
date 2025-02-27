@@ -4,7 +4,7 @@ import { Todo } from "./models/todo.model.js";
 const app = express()
 const port = process.env.port || 4000
 
-app.use(express.json())
+app.use(express.json());
 
 connectToDB();
 
@@ -57,7 +57,7 @@ app.get("/:todoId", async(req, res) => {
         console.log(error)
         res.send({
             success: false,
-            message: "Failed to receive todo list ",
+            message: "Failed to receive todo ",
             data: result, 
         });  
     }
@@ -78,7 +78,7 @@ app.patch("/:todoId", async(req, res) => {
     } catch (error) {
         res.send({
             success: false,
-            message: "Failed to update todo list ",
+            message: "Failed to update todo ",
             data: result, 
         });  
     }
